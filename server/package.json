@@ -1,0 +1,35 @@
+{
+    "name": "server",
+    "version": "1.0.0",
+    "description": "Backend API for MERN Task Management System",
+    "main": "server.js",
+    "scripts": {
+        "dev": "nodemon server.js",
+        "start": "node server.js"
+    },
+    "keywords": [
+        "mern",
+        "task-management",
+        "express",
+        "mongodb"
+    ],
+    "author": "Htun Naing Lynn",
+    "license": "ISC",
+    "type": "commonjs",
+    "dependencies": {
+        "bcryptjs": "^3.0.3",
+        "cookie-parser": "^1.4.7",
+        "cors": "^2.8.6",
+        "dotenv": "^17.4.2",
+        "exceljs": "^4.4.0",
+        "express": "^5.2.1",
+        "express-rate-limit": "^8.7.0",
+        "jsonwebtoken": "^9.0.3",
+        "mongoose": "^9.9.3",
+        "multer": "^2.2.0",
+        "nodemailer": "^9.0.6"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.14"
+    }
+}
