@@ -2,6 +2,8 @@
 
 A full-stack task management application built with the **MERN stack** (MongoDB, Express.js, React, and Node.js), featuring secure authentication, task management, file attachments, dashboard statistics, search and filtering, administrative user management, password recovery, and production deployment through IIS.
 
+---
+
 ## 🚀 Features
 
 ### 📋 Task Management
@@ -45,6 +47,8 @@ Users can select and upload **multiple files in a single operation**, making it 
 Before uploading, users can **change the filename of each selected attachment**.
 
 For example:
+
+```text
 Selected Files
 
 📄 project-report.pdf
@@ -55,6 +59,7 @@ Selected Files
 
 🖼️ dashboard.png
    → Dashboard Screenshot.png
+```
 
 This allows users to give uploaded files meaningful and descriptive names instead of keeping the original filenames.
 
@@ -104,10 +109,13 @@ The application includes role-based administrative functionality.
 
 Example users:
 
+```text
 System Administrator
 John Developer
 Sarah Analyst
+```
 
+---
 
 ## 🛠️ Technology Stack
 
@@ -148,8 +156,11 @@ Sarah Analyst
 * NSSM
 * Node.js Windows Service
 
+---
+
 ## 🏗️ Application Architecture
 
+```text
                          Browser
                             │
                             ▼
@@ -176,9 +187,13 @@ Sarah Analyst
                    ┌─────────────────┐
                    │  MongoDB Atlas  │
                    └─────────────────┘
+```
+
+---
 
 ## 📁 Project Structure
 
+```text
 mern-task-management/
 │
 ├── client/
@@ -229,9 +244,11 @@ mern-task-management/
 │
 ├── .gitignore
 └── README.md
+```
 
 > The `server/uploads/` directory is used for application file uploads and is excluded from the Git repository.
 
+---
 
 ## 🔐 Security
 
@@ -269,10 +286,13 @@ Administrative endpoints are protected by role-based authorization.
 
 Only authorized administrators can access administrative user-management functionality.
 
+---
+
 ## 👤 User Isolation
 
 Each task is associated with its authenticated owner.
 
+```text
 User A
   │
   ├── Task 1
@@ -296,10 +316,13 @@ The ownership model is also applied to:
 * Dashboard statistics
 * File attachments
 
+---
+
 ## 🔑 Password Recovery
 
 The application includes a complete password recovery workflow.
 
+```text
 Forgot Password
        │
        ▼
@@ -319,13 +342,17 @@ Token Invalidated
        │
        ▼
 Login With New Password
+```
 
 Password recovery uses SMTP email delivery and time-limited reset tokens.
 
 Sensitive email credentials are stored in environment variables and are not committed to GitHub.
 
+---
+
 ## 📎 Attachment Workflow
 
+```text
 Select Multiple Files
         │
         ▼
@@ -342,8 +369,11 @@ Associate With Task
         │
         ▼
 Protected Attachment Access
+```
 
 This workflow allows users to organize task attachments with meaningful filenames while supporting multiple files in a single upload operation.
+
+---
 
 ## 🔎 Search, Filtering & Pagination
 
@@ -356,6 +386,8 @@ The Task Management interface supports:
 * Task list navigation
 
 The filtering and pagination parameters are processed through the backend API.
+
+---
 
 ## 📊 Dashboard Statistics
 
@@ -371,6 +403,7 @@ The dashboard provides user-specific statistics including:
 
 Statistics are restricted to the authenticated user's tasks.
 
+---
 
 ## 👨‍💼 Administration
 
@@ -386,12 +419,15 @@ Example roles:
 | John Developer       | User  | Active |
 | Sarah Analyst        | User  | Active |
 
+---
+
 ## 🌐 Production Deployment
 
 The application has been deployed on Windows using **IIS** as the frontend web server and reverse proxy.
 
 ### Production Architecture
 
+```text
                     IIS
                      │
         ┌────────────┴────────────┐
@@ -407,6 +443,7 @@ The application has been deployed on Windows using **IIS** as the frontend web s
                                   │
                                   ▼
                            MongoDB Atlas
+```
 
 ### Node.js Service
 
@@ -419,6 +456,8 @@ This allows the API to:
 * Restart independently from the frontend
 * Operate without requiring a terminal window
 
+---
+
 ## ⚙️ Environment Variables
 
 Sensitive configuration is stored in environment files and excluded from Git.
@@ -426,11 +465,14 @@ Sensitive configuration is stored in environment files and excluded from Git.
 ### Server Environment
 
 Create:
-server/.env
 
+```text
+server/.env
+```
 
 Example:
 
+```env
 MONGO_URI=your_mongodb_atlas_connection_string
 JWT_SECRET=your_jwt_secret
 CLIENT_URL=http://your-server-address
@@ -439,20 +481,25 @@ EMAIL_USER=your_email_address
 EMAIL_PASS=your_email_app_password
 SMTP_HOST=smtp.example.com
 SMTP_PORT=587
-
+```
 
 ### Client Environment
 
 Create:
 
+```text
 client/.env
+```
 
 Example:
 
+```env
 VITE_API_URL=/TaskManagement/api
-
+```
 
 > Never commit real passwords, API keys, database credentials, JWT secrets, SMTP credentials, or other sensitive configuration to GitHub.
+
+---
 
 ## 🧪 Testing & Validation
 
@@ -504,6 +551,8 @@ The application has been tested for:
 * Automatic service startup
 * Production React build
 
+---
+
 # 📸 Screenshots
 
 The following screenshots demonstrate the main features and user interfaces of the application.
@@ -512,9 +561,13 @@ The following screenshots demonstrate the main features and user interfaces of t
 
 ![Dashboard](screenshots/dashboard.png)
 
+---
+
 ## 📋 Task Management
 
 ![Task Management](screenshots/task_management.png)
+
+---
 
 ## 📝 Task List
 
@@ -524,62 +577,73 @@ The following screenshots demonstrate the main features and user interfaces of t
 
 ![Task List Functions](screenshots/task_list_function.png)
 
+---
 
 ## 🔎 Search & Filters
 
 ![Search and Filters](screenshots/search_filters.png)
 
+---
 
 ## ➕ Create Task
 
 ![Create Task](screenshots/create_task.png)
 
+---
 
 ## 📄 Task Detail & Attachments
 
 ![Task Detail](screenshots/task_detail.png)
 
+---
 
 ## 👨‍💼 Admin User Management
 
 ![Admin User Management](screenshots/admin_user_management.png)
 
+---
 
 ## 🔐 Login
 
 ![Login](screenshots/login.png)
 
-
+---
 
 ## 📝 Register
 
 ![Register](screenshots/register.png)
 
+---
 
 ## 🔑 Forgot Password
 
 ![Forgot Password](screenshots/forgot_password.png)
 
+---
 
 ## 🚀 Local Development
 
 ### 1. Clone the Repository
 
+```bash
 git clone https://github.com/hnlxyz/mern-task-management.git
 cd mern-task-management
-
+```
 
 ### 2. Install Backend Dependencies
 
+```bash
 cd server
 npm install
+```
 
 ### 3. Configure Backend Environment
 
 Create:
 
+```text
 server/.env
-
+```
 
 Configure the required:
 
@@ -590,46 +654,61 @@ Configure the required:
 
 ### 4. Install Frontend Dependencies
 
+```bash
 cd ../client
 npm install
-
+```
 
 Create:
 
+```text
 client/.env
-
+```
 
 Configure:
 
+```env
 VITE_API_URL=/TaskManagement/api
-
+```
 
 ### 5. Run the Backend
 
 From the `server` directory:
 
+```bash
 npm start
+```
 
 ### 6. Run the Frontend
 
 From the `client` directory:
 
+```bash
 npm run dev
+```
 
 The Vite development server will provide the local frontend URL.
+
+---
 
 ## 🏭 Production Build
 
 To create the React production build:
 
+```bash
 cd client
 npm run build
+```
 
 The generated files are placed in:
 
+```text
 client/dist/
+```
 
 The production build can then be deployed through IIS.
+
+---
 
 ## 📌 Project Highlights
 
@@ -685,6 +764,8 @@ This project demonstrates practical full-stack development skills across the com
 * NSSM
 * MongoDB Atlas
 
+---
+
 ## 📚 Key Learning Areas
 
 This project was developed to strengthen practical experience with:
@@ -702,6 +783,8 @@ This project was developed to strengthen practical experience with:
 * Windows service deployment
 * Application security testing
 
+---
+
 ## 👨‍💻 Author
 
 **Htun Naing Lynn**
@@ -709,6 +792,8 @@ This project was developed to strengthen practical experience with:
 GitHub: https://github.com/hnlxyz
 
 LinkedIn: https://www.linkedin.com/in/htun-naing-lynn-67871a14/
+
+---
 
 ## 📄 License
 
