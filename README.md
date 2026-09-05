@@ -1,6 +1,6 @@
 # 🚀 MERN Task Management System
 
-A full-stack **Task Management System** built with the MERN stack, featuring secure authentication, task ownership and isolation, dashboard statistics, advanced search and filtering, file attachments, Excel export, password recovery, and administrative user management.
+A full-stack **Task Management System** built with the MERN stack, featuring secure authentication, task ownership and isolation, dashboard statistics, advanced search and filtering, file attachments, Excel export, password recovery and administrative user management.
 
 The application is deployed on **Windows Server using IIS as a reverse proxy**, with the React frontend hosted by IIS and the Node.js/Express backend running as a Windows service. MongoDB Atlas is used as the production database.
 
@@ -16,9 +16,9 @@ The system supports:
 * JWT-based authentication using HTTP-only cookies
 * Secure password hashing
 * Password recovery and reset
-* Task creation, editing, viewing, and deletion
+* Task creation, editing, viewing and deletion
 * Task ownership and user isolation
-* Task search, filtering, and pagination
+* Task search, filtering and pagination
 * Dashboard statistics
 * Priority-based task overview
 * Multiple file attachments
@@ -134,7 +134,7 @@ Features include:
 
 ## 📥 Export Tasks to Excel
 
-Users can export their accessible task data to an **Excel `.xlsx` file** for reporting, analysis, and offline use.
+Users can export their accessible task data to an **Excel `.xlsx` file** for reporting, analysis and offline use.
 
 ### Export Features
 
@@ -399,7 +399,7 @@ This prevents users from accessing another user's tasks by modifying request par
 
 ## Task Ownership
 
-Create, update, and delete operations verify task ownership before allowing changes.
+Create, update and delete operations verify task ownership before allowing changes.
 
 ## File Ownership
 
@@ -956,7 +956,7 @@ Through this project, the following areas were practiced and implemented:
 
 Senior System Analyst / Software Engineer
 
-13+ years of professional IT experience in Singapore, with experience across healthcare, engineering, and government-related systems.
+13+ years of professional IT experience in Singapore, with experience across healthcare, engineering and government-related systems.
 
 ### GitHub
 
@@ -970,4 +970,4 @@ https://www.linkedin.com/in/htun-naing-lynn-67871a14/
 
 # 📄 License
 
-This project is created for **portfolio, learning, demonstration, and professional development purposes**.
+This project is created for **portfolio, learning, demonstration and professional development purposes**.
