@@ -1,48 +1,163 @@
-# MERN Task Management System
+# 🚀 MERN Task Management System
 
-A full-stack task management application built with the **MERN stack** (MongoDB, Express.js, React, and Node.js), featuring secure authentication, task management, file attachments, dashboard statistics, search and filtering, administrative user management, password recovery, and production deployment through IIS.
+A full-stack **Task Management System** built with the MERN stack, featuring secure authentication, task ownership and isolation, dashboard statistics, advanced search and filtering, file attachments, Excel export, password recovery, and administrative user management.
+
+The application is deployed on **Windows Server using IIS as a reverse proxy**, with the React frontend hosted by IIS and the Node.js/Express backend running as a Windows service. MongoDB Atlas is used as the production database.
 
 ---
 
-## 🚀 Features
+## 📌 Project Overview
 
-### 📋 Task Management
+This project demonstrates the development of a production-style task management application using modern full-stack development practices.
+
+The system supports:
+
+* User registration and authentication
+* JWT-based authentication using HTTP-only cookies
+* Secure password hashing
+* Password recovery and reset
+* Task creation, editing, viewing, and deletion
+* Task ownership and user isolation
+* Task search, filtering, and pagination
+* Dashboard statistics
+* Priority-based task overview
+* Multiple file attachments
+* Custom filenames for uploaded files
+* File ownership protection
+* Excel export
+* Administrative user management
+* User activation and suspension
+* Role-based authorization
+* Responsive user interface
+* Production deployment through IIS
+* Node.js backend running as a Windows service
+* MongoDB Atlas database
+
+---
+
+# ✨ Features
+
+## 🔐 Authentication & Security
+
+* User registration
+* Secure login
+* JWT authentication
+* HTTP-only authentication cookies
+* Password hashing using bcrypt
+* Logout functionality
+* Expired-session handling
+* Protected API routes
+* Protected frontend routes
+* Password change
+* Forgot password functionality
+* Secure password reset using time-limited tokens
+* Password reset token invalidation
+* Password validation
+* Account status validation
+* Role-based authorization
+
+---
+
+## 📋 Task Management
+
+Users can manage their own tasks through a complete CRUD workflow.
+
+### Task Operations
 
 * Create tasks
-* View task details
+* View tasks
 * Edit tasks
 * Delete tasks
-* Task status management
-* Task priority management
-* Due date management
-* Detailed task descriptions
-* User-specific task ownership
-* Search tasks
-* Filter tasks by status and priority
-* Server-side pagination
-* Responsive task management interface
+* View task details
+* Assign task priority
+* Track task status
+* Set task due dates
+* Add task descriptions
+* Attach supporting files
 
-### 📊 Dashboard
+### Task Status
 
-The dashboard provides an overview of the authenticated user's tasks.
+* To Do
+* In Progress
+* Completed
 
-* Total task statistics
-* To Do task count
-* In Progress task count
-* Completed task count
+### Task Priority
+
+* Low
+* Medium
+* High
+
+---
+
+## 👤 User Isolation
+
+Task data is protected by user ownership.
+
+Each authenticated user can only access and manage their own tasks.
+
+```text
+User A
+├── Task 1
+├── Task 2
+└── Task 3
+
+User B
+├── Task 4
+├── Task 5
+└── Task 6
+```
+
+User A cannot view, modify, delete, or export User B's tasks.
+
+This ownership model is enforced at the backend API level rather than relying only on frontend filtering.
+
+---
+
+## 📊 Dashboard
+
+The dashboard provides an overview of the user's task activity.
+
+Features include:
+
+* Total tasks
+* To Do tasks
+* In Progress tasks
+* Completed tasks
 * Priority overview
-* User-specific statistics
-* Responsive dashboard layout
+* Task distribution
+* Search
+* Filtering
+* Pagination
+* Quick task management access
 
-### 📎 File Attachments
+---
+
+## 📥 Export Tasks to Excel
+
+Users can export their accessible task data to an **Excel `.xlsx` file** for reporting, analysis, and offline use.
+
+### Export Features
+
+* 📥 Export task data directly from the application
+* 📊 Excel `.xlsx` format
+* 📋 Useful for reporting and offline analysis
+* 🔎 Supports the application's task data and filtering workflow
+* 👤 Users can only export tasks belonging to their own account
+* 🔐 Export access is protected by authentication
+
+This feature demonstrates integration between the application and a structured reporting/export workflow.
+
+---
+
+## 📎 File Attachments
 
 The application provides flexible task attachment management with support for **multiple file uploads** and **custom filenames**.
 
-#### Multiple File Upload
+### Multiple File Upload
 
 Users can select and upload **multiple files in a single operation**, making it easy to attach several documents, images, reports, or other supporting files to a task.
 
-#### Custom File Names
+### Custom File Names
 
 Before uploading, users can **change the filename of each selected attachment**.
 
@@ -63,7 +178,7 @@ Selected Files
 
 This allows users to give uploaded files meaningful and descriptive names instead of keeping the original filenames.
 
-#### Attachment Features
+### Attachment Features
 
 * 📁 Multiple files can be selected at once
 * ✏️ Filename can be customized before upload
@@ -75,127 +190,134 @@ This allows users to give uploaded files meaningful and descriptive names instea
 * 🚀 Multipart file upload
 * 🛡️ Uploaded files are excluded from the Git repository
 
-### 🔐 Authentication & Security
+---
 
-* User registration
-* User login
-* JWT-based authentication
-* HTTP-only authentication cookies
-* Password hashing using bcrypt
-* Protected API routes
-* User account status validation
-* Logout functionality
-* Expired-session handling
-* Forgot-password functionality
-* Email-based password recovery
-* Time-limited password reset tokens
-* Password reset token invalidation
-* Change password functionality
-* Password validation
-* Authentication rate limiting
-* User/task ownership validation
+## 🔎 Search, Filtering & Pagination
 
-### 👨‍💼 Administration
+The task management interface provides server-side search and filtering.
 
-The application includes role-based administrative functionality.
+Users can search and filter tasks based on supported task properties.
 
-* Administrator authentication
-* Admin-only protected routes
-* User management
-* User role management
-* User account status management
-* Account suspension/reactivation
-* Role-based authorization
+Features include:
 
-Example users:
-
-```text
-System Administrator
-John Developer
-Sarah Analyst
-```
+* Task search
+* Status filtering
+* Priority filtering
+* Pagination
+* Page navigation
+* Server-side task retrieval
+* User-specific results
 
 ---
 
-## 🛠️ Technology Stack
+## 👨‍💼 Administration
 
-### Frontend
+Administrators have access to user management functionality.
+
+Admin features include:
+
+* View registered users
+* View user roles
+* View account status
+* Activate users
+* Suspend users
+* Manage user accounts
+* Protected administrative routes
+
+Administrative functionality is protected using role-based authorization.
+
+---
+
+# 🛠️ Technology Stack
+
+## Frontend
 
 * React
 * Vite
-* JavaScript (ES6+)
+* JavaScript
 * HTML5
 * CSS3
 * React Hooks
-* Lucide React
+* Fetch API
 
-### Backend
+## Backend
 
 * Node.js
 * Express.js
-* REST API
+* JavaScript
 * JWT
 * bcrypt
 * Multer
-* Nodemailer
-* ExcelJS
-* Cookie-based authentication
+* REST API
 
-### Database
+## Database
 
 * MongoDB Atlas
 * Mongoose
 
-### Development & Deployment
+## Reporting
 
-* Git
-* GitHub
-* Microsoft IIS
+* ExcelJS
+* Excel `.xlsx` export
+
+## Deployment
+
+* Windows Server
+* IIS
 * IIS URL Rewrite
-* Application Request Routing (ARR)
+* IIS Application Request Routing (ARR)
 * NSSM
 * Node.js Windows Service
 
+## Development Tools
+
+* Git
+* GitHub
+* GitHub Desktop
+* Postman
+* Visual Studio Code
+
 ---
 
-## 🏗️ Application Architecture
+# 🏗️ Application Architecture
 
 ```text
-                         Browser
-                            │
-                            ▼
-                   ┌─────────────────┐
-                   │       IIS       │
-                   │ React Frontend  │
-                   └────────┬────────┘
-                            │
-                   /TaskManagement/api
-                            │
-                            ▼
-                   ┌─────────────────┐
-                   │ IIS URL Rewrite │
-                   │      + ARR      │
-                   └────────┬────────┘
-                            │
-                            ▼
-                   ┌─────────────────┐
-                   │    Node.js API  │
-                   │    Express.js   │
-                   └────────┬────────┘
-                            │
-                            ▼
-                   ┌─────────────────┐
-                   │  MongoDB Atlas  │
-                   └─────────────────┘
+                         ┌─────────────────────┐
+                         │      Browser        │
+                         │   React Frontend    │
+                         └──────────┬──────────┘
+                                    │
+                                    │ HTTP
+                                    ▼
+                         ┌─────────────────────┐
+                         │        IIS          │
+                         │  React Static Files │
+                         │    URL Rewrite      │
+                         │        ARR          │
+                         └──────────┬──────────┘
+                                    │
+                              /api requests
+                                    │
+                                    ▼
+                         ┌─────────────────────┐
+                         │     Node.js         │
+                         │     Express API     │
+                         │      Port 5000      │
+                         └──────────┬──────────┘
+                                    │
+                                    ▼
+                         ┌─────────────────────┐
+                         │    MongoDB Atlas    │
+                         │      Database       │
+                         └─────────────────────┘
 ```
 
 ---
 
-## 📁 Project Structure
+# 📁 Project Structure
 
 ```text
 mern-task-management/
-│
 ├── client/
 │   ├── public/
 │   ├── src/
@@ -213,18 +335,15 @@ mern-task-management/
 │   ├── middleware/
 │   │   ├── adminMiddleware.js
 │   │   └── authMiddleware.js
-│   │
 │   ├── models/
 │   │   ├── Task.js
 │   │   ├── UploadedFile.js
 │   │   └── user.js
-│   │
 │   ├── routes/
 │   │   ├── adminRoutes.js
 │   │   ├── authRoutes.js
 │   │   ├── fileRoutes.js
 │   │   └── taskRoutes.js
-│   │
 │   ├── uploads/
 │   ├── server.js
 │   └── package.json
@@ -246,111 +365,94 @@ mern-task-management/
 └── README.md
 ```
 
-> The `server/uploads/` directory is used for application file uploads and is excluded from the Git repository.
-
 ---
 
-## 🔐 Security
+# 🔒 Security
 
-Security and authorization are core parts of the application.
+Security was considered throughout the application rather than only at the UI level.
 
-### Authentication Security
+## Authentication
 
-* JWT authentication
+Authentication is implemented using:
+
+* JWT
 * HTTP-only cookies
-* Password hashing with bcrypt
-* Protected API routes
-* Authentication rate limiting
-* Session and expired-token handling
-* Secure password reset tokens
-* Password reset token expiration
-* Reset-token invalidation after successful password reset
+* Password hashing
+* Protected routes
+* Session validation
 
-### Authorization
+## Authorization
 
-Users can only access resources that belong to them.
+Backend middleware verifies:
 
-Task operations are restricted using the authenticated user's ID.
+* Authentication status
+* User identity
+* Account status
+* Administrative privileges
+* Resource ownership
 
-This prevents users from:
+## User Isolation
 
-* Viewing another user's tasks
-* Editing another user's tasks
-* Deleting another user's tasks
-* Viewing another user's statistics
-* Accessing another user's attachments
+Task queries are restricted to the authenticated user's ID.
 
-### Administrative Security
+This prevents users from accessing another user's tasks by modifying request parameters or URLs.
 
-Administrative endpoints are protected by role-based authorization.
+## Task Ownership
 
-Only authorized administrators can access administrative user-management functionality.
+Create, update, and delete operations verify task ownership before allowing changes.
 
----
+## File Ownership
 
-## 👤 User Isolation
+Attachment access is also associated with the task owner.
 
-Each task is associated with its authenticated owner.
+Users cannot access files belonging to another user's tasks.
 
-```text
-User A
-  │
-  ├── Task 1
-  ├── Task 2
-  └── Task 3
+## Password Security
 
-User B
-  │
-  ├── Task 4
-  ├── Task 5
-  └── Task 6
-```
+Passwords are:
 
-User A cannot access User B's tasks through the application API.
-
-The ownership model is also applied to:
-
-* Task creation
-* Task updates
-* Task deletion
-* Dashboard statistics
-* File attachments
+* Hashed using bcrypt
+* Never stored in plaintext
+* Validated during password changes and resets
+* Protected by reset-token expiration
+* Protected against reuse of the current password
 
 ---
 
-## 🔑 Password Recovery
+# 🔑 Password Recovery
 
 The application includes a complete password recovery workflow.
 
 ```text
+User
+ │
+ ▼
 Forgot Password
-       │
-       ▼
-Enter Email Address
-       │
-       ▼
-Reset Email
-       │
-       ▼
-Time-Limited Reset Token
-       │
-       ▼
-Create New Password
-       │
-       ▼
-Token Invalidated
-       │
-       ▼
-Login With New Password
+ │
+ ▼
+Email Reset Link
+ │
+ ▼
+Secure Reset Token
+ │
+ ▼
+Reset Password
+ │
+ ▼
+Validate Password
+ │
+ ▼
+Invalidate Reset Token
+ │
+ ▼
+Password Updated
 ```
 
-Password recovery uses SMTP email delivery and time-limited reset tokens.
-
-Sensitive email credentials are stored in environment variables and are not committed to GitHub.
+Reset tokens are time-limited and invalidated after successful password reset.
 
 ---
 
-## 📎 Attachment Workflow
+# 📎 Attachment Workflow
 
 ```text
 Select Multiple Files
@@ -359,197 +461,252 @@ Select Multiple Files
 Review Selected Files
         │
         ▼
-Customize File Names
+Customize Filenames
         │
         ▼
-Upload Files
+Validate File Size
         │
         ▼
-Associate With Task
+Multipart Upload
         │
         ▼
-Protected Attachment Access
+Store Attachment Metadata
+        │
+        ▼
+Associate Files with Task
+        │
+        ▼
+Authenticated File Access
 ```
 
-This workflow allows users to organize task attachments with meaningful filenames while supporting multiple files in a single upload operation.
+Maximum file size:
+
+**10 MB per file**
 
 ---
 
-## 🔎 Search, Filtering & Pagination
+# 📊 Excel Export Workflow
 
-The Task Management interface supports:
+```text
+Authenticated User
+        │
+        ▼
+Task Management
+        │
+        ▼
+Request Excel Export
+        │
+        ▼
+Verify User Ownership
+        │
+        ▼
+Retrieve User's Tasks
+        │
+        ▼
+Generate .xlsx File
+        │
+        ▼
+Download Excel Report
+```
 
-* Task title search
+The backend ensures that exported task data belongs to the authenticated user.
+
+---
+
+# 🔎 Search, Filtering & Pagination
+
+The application uses server-side task retrieval to support:
+
+* Search
 * Status filtering
 * Priority filtering
-* Server-side pagination
-* Task list navigation
+* Pagination
+* User-specific task queries
 
-The filtering and pagination parameters are processed through the backend API.
-
----
-
-## 📊 Dashboard Statistics
-
-The dashboard provides user-specific statistics including:
-
-| Statistic         | Description                                 |
-| ----------------- | ------------------------------------------- |
-| Total Tasks       | Total tasks owned by the authenticated user |
-| To Do             | Tasks that have not started                 |
-| In Progress       | Tasks currently being worked on             |
-| Completed         | Finished tasks                              |
-| Priority Overview | Distribution of task priorities             |
-
-Statistics are restricted to the authenticated user's tasks.
+This prevents the frontend from relying solely on locally loaded task data.
 
 ---
 
-## 👨‍💼 Administration
+# 📈 Dashboard Statistics
 
-The administrative interface provides protected user-management functionality.
+Dashboard statistics are calculated from the authenticated user's tasks.
 
-Administrators can manage application users and their account status.
+Statistics include:
 
-Example roles:
+* Total tasks
+* To Do
+* In Progress
+* Completed
+* Priority distribution
 
-| User                 | Role  | Status |
-| -------------------- | ----- | ------ |
-| System Administrator | Admin | Active |
-| John Developer       | User  | Active |
-| Sarah Analyst        | User  | Active |
+Statistics are also protected by user ownership rules.
 
 ---
 
-## 🌐 Production Deployment
+# 👨‍💼 Administration
 
-The application has been deployed on Windows using **IIS** as the frontend web server and reverse proxy.
+The administrator interface provides user account management.
 
-### Production Architecture
+Administrators can:
+
+* View users
+* View user roles
+* View account status
+* Activate accounts
+* Suspend accounts
+
+Administrative routes are protected by authentication and admin authorization middleware.
+
+---
+
+# 🚀 Production Deployment
+
+The application was deployed using the following architecture:
 
 ```text
-                    IIS
-                     │
-        ┌────────────┴────────────┐
-        │                         │
-        ▼                         ▼
- /TaskManagement/        /TaskManagement/api/
-        │                         │
-        ▼                         ▼
- React Production Build     IIS URL Rewrite
-                                  │
-                                  ▼
-                           Node.js :5000
-                                  │
-                                  ▼
-                           MongoDB Atlas
+Mac / Browser
+      │
+      ▼
+Windows Server
+10.211.55.3
+      │
+      ▼
+IIS
+      │
+      ├── React Frontend
+      │
+      └── /TaskManagement/api
+                │
+                ▼
+        IIS Reverse Proxy
+                │
+                ▼
+       Node.js / Express
+          127.0.0.1:5000
+                │
+                ▼
+          MongoDB Atlas
 ```
 
-### Node.js Service
+---
 
-The backend Node.js application runs as a Windows service using **NSSM (Non-Sucking Service Manager)**.
+# 🌐 IIS Configuration
 
-This allows the API to:
+IIS serves the React production build and forwards API requests to Node.js.
+
+```text
+/TaskManagement/
+        │
+        ├── React application
+        │
+        └── /TaskManagement/api
+                    │
+                    ▼
+              Node.js :5000
+```
+
+IIS components used:
+
+* URL Rewrite
+* Application Request Routing (ARR)
+* Reverse Proxy
+
+---
+
+# ⚙️ Node.js Windows Service
+
+The backend runs as a Windows service using NSSM.
+
+```text
+Windows
+   │
+   ▼
+TaskManagementAPI
+   │
+   ▼
+Node.js
+   │
+   ▼
+server.js
+   │
+   ▼
+Express API
+```
+
+This allows the backend to:
 
 * Start automatically with Windows
-* Run continuously in the background
-* Restart independently from the frontend
-* Operate without requiring a terminal window
+* Continue running without an open terminal
+* Restart after server reboot
+* Run as a background service
 
 ---
 
-## ⚙️ Environment Variables
+# 🔧 Environment Variables
 
-Sensitive configuration is stored in environment files and excluded from Git.
-
-### Server Environment
-
-Create:
-
-```text
-server/.env
-```
+Environment variables are used for configuration and are intentionally excluded from Git.
 
 Example:
 
 ```env
-MONGO_URI=your_mongodb_atlas_connection_string
+MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
 CLIENT_URL=http://your-server-address
-
-EMAIL_USER=your_email_address
-EMAIL_PASS=your_email_app_password
-SMTP_HOST=smtp.example.com
-SMTP_PORT=587
 ```
 
-### Client Environment
-
-Create:
-
-```text
-client/.env
-```
-
-Example:
-
-```env
-VITE_API_URL=/TaskManagement/api
-```
-
-> Never commit real passwords, API keys, database credentials, JWT secrets, SMTP credentials, or other sensitive configuration to GitHub.
+Actual `.env` files are **never committed to GitHub**.
 
 ---
 
-## 🧪 Testing & Validation
+# 🧪 Testing & Validation
 
-The application has been tested for:
+The application was tested across multiple areas.
 
-### Authentication
+## Authentication Testing
 
-* User registration
+* Registration
 * Login
 * Logout
 * Expired authentication
+* Password change
 * Forgot password
 * Password reset
-* Change password
 
-### Authorization
+## Authorization Testing
 
 * User isolation
 * Task ownership
-* Create/update/delete ownership
+* File ownership
 * Admin authorization
-* Account status handling
+* Account suspension
 
-### Files
+## Task Testing
 
-* Multiple file upload
-* Custom filename handling
-* Attachment ownership
-* Protected attachment access
-* 10 MB maximum file size per file
-
-### Application
-
-* CRUD operations
+* Create
+* Read
+* Update
+* Delete
 * Search
 * Filtering
 * Pagination
-* Dashboard statistics
-* MongoDB Atlas connectivity
-* REST API functionality
-* Responsive UI
+* Statistics
+* Excel export
 
-### Production
+## File Testing
 
-* IIS hosting
-* IIS URL Rewrite
-* ARR reverse proxy
-* Node.js Windows service
-* Automatic service startup
-* Production React build
+* Multiple uploads
+* Custom filenames
+* File size validation
+* Attachment retrieval
+* User ownership protection
+
+## Deployment Testing
+
+* IIS frontend
+* IIS API reverse proxy
+* Node.js service
+* MongoDB Atlas connection
+* Windows reboot recovery
 
 ---
 
@@ -621,180 +778,196 @@ The following screenshots demonstrate the main features and user interfaces of t
 
 ---
 
-## 🚀 Local Development
+# 💻 Local Development
 
-### 1. Clone the Repository
+## Clone the Repository
 
 ```bash
 git clone https://github.com/hnlxyz/mern-task-management.git
 cd mern-task-management
 ```
 
-### 2. Install Backend Dependencies
+## Install Client Dependencies
+
+```bash
+cd client
+npm install
+```
+
+## Start Frontend
+
+```bash
+npm run dev
+```
+
+---
+
+## Install Server Dependencies
+
+Open another terminal:
 
 ```bash
 cd server
 npm install
 ```
 
-### 3. Configure Backend Environment
+## Start Backend
 
-Create:
+```bash
+node server.js
+```
+
+The backend runs on:
 
 ```text
-server/.env
+http://localhost:5000
 ```
-
-Configure the required:
-
-* MongoDB Atlas connection
-* JWT secret
-* Client URL
-* SMTP settings
-
-### 4. Install Frontend Dependencies
-
-```bash
-cd ../client
-npm install
-```
-
-Create:
-
-```text
-client/.env
-```
-
-Configure:
-
-```env
-VITE_API_URL=/TaskManagement/api
-```
-
-### 5. Run the Backend
-
-From the `server` directory:
-
-```bash
-npm start
-```
-
-### 6. Run the Frontend
-
-From the `client` directory:
-
-```bash
-npm run dev
-```
-
-The Vite development server will provide the local frontend URL.
 
 ---
 
-## 🏭 Production Build
+# 🏗️ Production Build
 
-To create the React production build:
+Build the React frontend:
 
 ```bash
 cd client
 npm run build
 ```
 
-The generated files are placed in:
+The production files are generated in:
 
 ```text
 client/dist/
 ```
 
-The production build can then be deployed through IIS.
+These files can then be deployed to IIS.
 
 ---
 
-## 📌 Project Highlights
+# 📦 Git & Repository
 
-This project demonstrates practical full-stack development skills across the complete application lifecycle.
+The repository contains the application source code and documentation.
+
+Sensitive and generated files are excluded using `.gitignore`.
+
+```text
+.env
+.env.*
+node_modules/
+uploads/
+dist/
+*.log
+```
+
+Uploaded user files stored in `server/uploads/` are intentionally excluded from the Git repository.
+
+---
+
+# 🌟 Project Highlights
+
+This project demonstrates practical full-stack development experience across:
+
+* React frontend development
+* REST API development
+* Node.js and Express
+* MongoDB and Mongoose
+* JWT authentication
+* Secure cookie-based sessions
+* Role-based authorization
+* User/resource ownership
+* File upload management
+* Multiple file uploads
+* Custom filename handling
+* Excel report generation
+* Search and filtering
+* Pagination
+* Dashboard statistics
+* Password recovery
+* Administrative user management
+* IIS deployment
+* Reverse proxy configuration
+* Windows service deployment
+* Production troubleshooting
+* Git/GitHub workflow
+* Security testing
+* Disaster recovery planning
+
+---
+
+# 📚 Key Learning Areas
+
+Through this project, the following areas were practiced and implemented:
 
 ### Frontend
 
-* React application development
-* Responsive UI
+* React component architecture
 * React Hooks
-* Search and filtering
-* Pagination
+* State management
 * Form handling
-* Multiple file upload interface
-* Custom filename handling
+* API integration
+* Responsive UI
+* Authentication flows
+* File upload interfaces
 
 ### Backend
 
-* Node.js
-* Express.js
-* REST API development
-* Authentication middleware
-* Authorization middleware
-* File upload handling
-* Email integration
-* Password recovery
+* Express routing
+* Middleware
+* REST API design
+* Authentication
+* Authorization
+* Error handling
+* File processing
+* Excel generation
 
 ### Database
 
-* MongoDB Atlas
-* Mongoose
-* Data relationships
-* User ownership
-* Task persistence
+* MongoDB
+* Mongoose schemas
+* ObjectId relationships
+* Data migration
+* User ownership queries
 
 ### Security
 
-* JWT authentication
+* JWT
 * HTTP-only cookies
 * bcrypt password hashing
-* Role-based authorization
+* Authorization middleware
 * User isolation
 * Resource ownership
 * Password reset security
-* Rate limiting
 
 ### Deployment
 
 * IIS
 * URL Rewrite
-* ARR reverse proxy
-* Node.js Windows service
-* NSSM
+* ARR
+* Reverse proxy
+* Node.js Windows services
 * MongoDB Atlas
+* Production troubleshooting
 
 ---
 
-## 📚 Key Learning Areas
-
-This project was developed to strengthen practical experience with:
-
-* MERN stack development
-* Full-stack application architecture
-* REST API design
-* Authentication and authorization
-* Secure password management
-* File upload systems
-* MongoDB data modeling
-* React frontend development
-* Production deployment
-* IIS reverse proxy configuration
-* Windows service deployment
-* Application security testing
-
----
-
-## 👨‍💻 Author
+# 👨‍💻 Author
 
 **Htun Naing Lynn**
 
-GitHub: https://github.com/hnlxyz
+Senior System Analyst / Software Engineer
 
-LinkedIn: https://www.linkedin.com/in/htun-naing-lynn-67871a14/
+13+ years of professional IT experience in Singapore, with experience across healthcare, engineering, and government-related systems.
+
+### GitHub
+
+https://github.com/hnlxyz
+
+### LinkedIn
+
+https://www.linkedin.com/in/htun-naing-lynn-67871a14/
 
 ---
 
-## 📄 License
+# 📄 License
 
-This project is intended for **portfolio and educational purposes**.
+This project is created for **portfolio, learning, demonstration, and professional development purposes**.
